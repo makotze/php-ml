@@ -136,7 +136,7 @@ class NaiveBayes implements Classifier
      */
     private function sampleProbability(array $sample, int $feature, string $label): float
     {
-        $value = $sample[$feature];
+        $value = (isset($sample[$feature]))? $sample[$feature] : null;
         if ($this->dataType[$label][$feature] == self::NOMINAL) {
             if (!isset($this->discreteProb[$label][$feature][$value]) ||
                 $this->discreteProb[$label][$feature][$value] == 0) {
